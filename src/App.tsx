@@ -1,7 +1,16 @@
+import { Feed } from "./Components/Feed/Feed";
+import { Header } from "./Components/Header/Header";
+
+import './global.css';
+
 export function App() {
 
   return (
-    <h1>Hello World</h1>
+    <div className="home">
+      <Header />
+
+      <Feed />
+    </div>
   )
 }
 

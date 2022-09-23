@@ -1,0 +1,46 @@
+.feed {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content {
+  width: 736px;
+}
+
+.content header {
+  width: 100%;
+  margin-top: 50px;;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content header .text {
+  display: flex;
+  font-size: 14px;
+}
+
+.content header .text .amount {
+  width: 25px;
+  display: flex;
+  margin-left: 10px;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 999px;
+  font-size: 12px;
+
+  color: var(--gray-200);
+  background: var(--gray-400)
+}
+
+.content header .text .created {
+  color: var(--blue);
+}
+
+.content header .text .completed {
+  color: var(--purple);
+  
+}
