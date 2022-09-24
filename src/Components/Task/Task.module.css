@@ -47,6 +47,9 @@
   border: 1px solid var(--blue);
   outline: none;
   cursor: pointer;
+
+  outline: transparent;
+  box-shadow: none;
 }
 
 .checkbox > input:checked {
