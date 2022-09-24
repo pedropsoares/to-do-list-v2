@@ -1,60 +1,56 @@
 import React, { useEffect, useState } from 'react'
-import { Search } from '../Search/Search'
+import { v4 as uuidv4 } from 'uuid';
+
+import { TaskInterface } from '../../Interfaces/Task.Interface'
 
 import clipboard from '/src/assets/Clipboard.svg'
 import style from './Feed.module.css'
+
+import { InputNewTask } from '../InputNewTask/InputNewTask'
 import { Task } from '../Task/Task'
 
-interface Task {
-  id: number,
-  text: string,
-}
-
-const taksList: Task[] = [
-  {
-    id: 1,
-    text: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-  },
-  {
-    id: 2,
-    text: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-  },
-  {
-    id: 3,
-    text: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-  },
-  {
-    id: 4,
-    text: 'asdasd',
-  },
-]
 
 
 export const Feed = () => {
 
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<TaskInterface[]>([]);
 
-  useEffect(() => {
-    setTasks(taksList)
+  const handleSetNewTask = (text: string) => {
+    const task: TaskInterface = {
+      id: uuidv4(),
+      text,
+      checked: false
+    }
+    
+    setTasks([...tasks, task])
+  }
 
-  }, [])
-
+  const filterCompleted = () => {
+    return tasks.filter(t => t.checked === true).length
+  }
 
   return (
 
     <div className={style.container}>
-      <Search />
+      <InputNewTask handleSetNewTask={handleSetNewTask} />
+
       <div className={style.content}>
 
         <header>
           <div className={style.text}>
             <p className={style.created}>Tarefas criadas</p>
-            <span className={style.amount}>{tasks.length}</span>
+            <span className={style.amount}>{tasks?.length}</span>
           </div>
 
           <div className={style.text}>
             <p className={style.completed}>Concluídas</p>
-            <span className={style.amount}>0</span>
+            {tasks?.length === 0 ? (
+              <span className={style.amount}>0</span>
+            ) : (
+              <span className={`${style.amount} ${style.amountCompleted}`}>
+                {`${filterCompleted()} de ${tasks?.length}`}
+              </span>
+            )}
           </div>
 
         </header>
@@ -76,10 +72,9 @@ export const Feed = () => {
           </div>
         ) : (
           <div className={style.feed}>
-            {tasks.map(task => {
-
+            {tasks?.map(task => {
               return (
-                <Task text={task.text} />
+                <Task key={task.id} id={task.id} text={task.text} checked={task.checked} tasks={tasks} setTasks={setTasks} />
               )
             })}
           </div>

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Search } from '../Search/Search'
 
 import logo from '/src/assets/Logo.svg'
 import styled from './Header.module.css'

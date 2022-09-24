@@ -12,6 +12,9 @@
   height: 54px;
   border-radius: 8px;
   padding: 10px;
+
+  color: var(--gray-200);
+  transition: 0.3s;
 }
 
 .search button {
@@ -24,4 +27,15 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+
+  transition: 0.3s;
+}
+
+.search button:focus {
+  outline: transparent;
+  box-shadow: 0 0 0 2px var(--blue) !important;
+}
+
+.search button:valid:hover {
+  background: var(--blue);
 }

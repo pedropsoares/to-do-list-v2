@@ -24,6 +24,7 @@
 
 .content header .text .amount {
   width: 25px;
+  height: 19px;
   display: flex;
   margin-left: 10px;
   align-items: center;
@@ -80,4 +81,8 @@
 
 .contentEmpty img {
   margin-bottom: 16px;
+}
+
+.amountCompleted {
+  width: 52px !important;
 }
