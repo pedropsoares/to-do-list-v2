@@ -13,7 +13,7 @@ interface props {
 
 export const Task = ({ id, text, checked, tasks, setTasks }: props) => {
 
-  const teste = (e: any) => {
+  const handleChecked = (e: any) => {
     const updatedTakes = tasks.map(task => task.id === id ? {
       ...task,
       checked: !task.checked
@@ -32,7 +32,7 @@ export const Task = ({ id, text, checked, tasks, setTasks }: props) => {
     <div className={style.content}>
       <div className={style.container}>
         <label className={style.checkbox}>
-          <input type="checkbox" onChange={teste} />
+          <input type="checkbox" onChange={handleChecked} checked={checked}/>
           <span></span>
         </label>
 
