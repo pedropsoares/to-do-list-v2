@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 
 import { TaskInterface } from '../../Interfaces/Task.Interface'
@@ -8,12 +8,10 @@ import style from './Feed.module.css'
 
 import { InputNewTask } from '../InputNewTask/InputNewTask'
 import { Task } from '../Task/Task'
-
-
+import usePersistedState from '../../Hooks/usePersistedState';
 
 export const Feed = () => {
-
-  const [tasks, setTasks] = useState<TaskInterface[]>([]);
+  const [tasks, setTasks] = usePersistedState<TaskInterface[]>('tasks', [])
 
   const handleSetNewTask = (text: string) => {
     const task: TaskInterface = {
