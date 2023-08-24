@@ -1,9 +1,9 @@
 import { useCallback, useState } from "react"
 
-const usePersistedState = <T>(key: string, defaultValue: T) => {
+const usePersistedState = <T>(key: string, initialValue: T) => {
   const [storedValue, setStoredValue] = useState<T>(() => {
     const tasksStorage = localStorage.getItem(key)
-    return tasksStorage ? JSON.parse(tasksStorage) : defaultValue
+    return tasksStorage ? JSON.parse(tasksStorage) : initialValue
   })
 
   const setValue = useCallback(
